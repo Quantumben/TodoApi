@@ -10,14 +10,23 @@
     $db = $database->getConnection();
     $item = new Todo($db);
 
-    $data = json_decode(file_get_contents("php://input"));
-    
-    $item->Title = $data->Title;
-    $item->Description = $data->Description;
-    
-    if($item->createTodo()){
-        echo 'Todo created successfully.';
-    } else{
-        echo 'Todo could not be created.';
-    }
+    // Get raw posted data
+  $data = json_decode(file_get_contents("php://input"));
+
+  $item->Title = $data->Title;
+  $item->Description = $data->Description;
+  
+
+  // Create post
+  if($item->createTodo()) {
+    echo json_encode(
+      array('message' => 'Todo Created')
+    );
+  } else {
+    echo json_encode(
+      array('message' => 'Todo Not Created')
+    );
+  }
 ?>
+
+

@@ -19,21 +19,21 @@ $db = $conec->connect();
 
 
 
-//$response = array();
+$response = array();
 
 
  //$id = $_POST['id'];
 
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
+if($_SERVER['REQUEST_METHOD'] === 'GET'){
 
   //$id = parse_str(file_get_contents('php://input'), $_DELETE);
   
-  $response = array();
+  // $response = array();
 
   //move on and delete the movie
   
-   $id = $_POST['id'];
+   $id = $_GET['id'];
   
 
   $stmt = $db->prepare("DELETE FROM todo WHERE id= :id LIMIT 1");

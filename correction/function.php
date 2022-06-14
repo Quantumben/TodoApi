@@ -28,18 +28,23 @@
         }
         // CREATE
         public function createTodo(){
-            //$slQuery = "INSERT INTO ".$this->db_table." SET Title = :Title, Description = :Description";
-           $slQuery = "INSERT INTO todo (Title,Description) values(:Title,:Description)";
+
+            
+            // $slQuery = "INSERT INTO ".$this->db_table." SET Title = :Title, Description = :Description";
+            $slQuery = "INSERT INTO ' . $this->table . ' SET Title = :Title, Description = :Description ";
+
             $stmt = $this->conn->prepare($slQuery);
         
             // sanitize
             $this->Title=htmlspecialchars(strip_tags($this->Title));
             $this->Description=htmlspecialchars(strip_tags($this->Description));
+            $this->id=htmlspecialchars(strip_tags($this->id));
   
         
             // bind data
             $stmt->bindParam(":Title", $this->Title);
             $stmt->bindParam(":Description", $this->Description);
+            $stmt->bindParam(":id", $this->id);
             
             if($stmt->execute()){
                return true;
