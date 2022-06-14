@@ -25,7 +25,7 @@ $response = array();
  //$id = $_POST['id'];
 
 
-if($_SERVER['REQUEST_METHOD'] === 'GET'){
+if($_SERVER['REQUEST_METHOD'] === 'DELETE'){
 
   //$id = parse_str(file_get_contents('php://input'), $_DELETE);
   
